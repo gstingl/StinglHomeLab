@@ -1,0 +1,131 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: stardewValley_CAPS;
+    src: url(/StardewValleyFishTank/fonts/stardew_valley/Stardew\ Valley\ ALL\ CAPS.ttf);
+  }
+
+@font-face {
+    font-family: StoryMilky;
+    src: url(/StardewValleyFishTank/fonts/story_milky/Story\ Milky.ttf);
+  }
+
+@font-face {
+    font-family: ThisCafe;
+    src: url(/StardewValleyFishTank/fonts/this_cafe/This\ Cafe.ttf);
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
+    background-image: url(/StardewValleyFishTank/images/background_leaves.jpg);
+    background-repeat: repeat-x repeat-y;
+    background-size: 640px 360px;
+}
+
+.logo {
+    width: 500px;
+    height: 250px;
+}
+
+.map {
+    border: solid 2px rgb(0, 0, 0);
+    border-radius: 1%;
+    box-shadow: 5px 5px 10px #000000;
+    margin-bottom: 25px;
+}
+
+.menu {
+    display: flex;
+    margin: 5px;
+    margin-bottom: 25px;
+}
+
+.fishButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    border: solid 2px red;
+    font-family: StoryMilky;
+    background-image: url(/StardewValleyFishTank/images/fishingRod.png);
+    width: 150px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-position: 90%;
+    background-size: 30px;
+    text-align: left;
+    padding: 6px;
+    padding-right: 0px;
+    font-size: 20px;
+    background-color: burlywood;
+    color: rgb(184, 104, 0);
+    -webkit-text-stroke: .5px black;
+    border: solid 2.5px rgb(62, 35, 0);
+    box-shadow: 5px 5px 10px #000000;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: rgb(181, 149, 107);
+}
+
+button:active {
+    background-color: burlywood;
+}
+
+select {
+    height: 48px;
+    width: 125px;
+    border-radius: 10%;
+    margin: 15px;
+    font-size: 20px;
+    background-color: burlywood;
+    color: rgb(184, 104, 0);
+    -webkit-text-stroke: .5px black;
+    border: solid 2.5px rgb(62, 35, 0);
+    box-shadow: 5px 5px 10px #000000;
+    font-family: StoryMilky;
+}
+
+h1 {
+    font-family: StoryMilky;
+    background-color: burlywood;
+    -webkit-text-stroke: .2px black;
+    color: rgb(184, 104, 0);
+    border: solid 2.5px rgb(62, 35, 0);
+    box-shadow: 5px 5px 10px #000000;
+    border-radius: 10px;
+    align-self: center;
+    padding: 10px;
+    padding-top: 12px;
+}
+
+#fishBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.fish{
+    padding: 8px;
+    height: auto;
+    width: 400px;
+    border-radius: 15px;
+    margin: 15px;
+    font-size: 20px;
+    background-color: burlywood;
+    color: rgb(184, 104, 0);
+    -webkit-text-stroke: .5px black;
+    border: solid 2.5px rgb(62, 35, 0);
+    box-shadow: 5px 5px 10px #000000;
+    font-family: StoryMilky;
+    line-height: 27px;
+  }

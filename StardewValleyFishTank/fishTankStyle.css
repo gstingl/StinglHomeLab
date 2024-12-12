@@ -3,6 +3,11 @@
     padding: 0px;
 }
 
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
 @font-face {
     font-family: stardewValley_CAPS;
     src: url(/StardewValleyFishTank/fonts/stardew_valley/Stardew\ Valley\ ALL\ CAPS.ttf);
@@ -53,17 +58,9 @@ body {
 }
 
 button {
-    border: solid 2px red;
     font-family: StoryMilky;
-    background-image: url(/StardewValleyFishTank/images/fishingRod.png);
-    width: 150px;
     height: 48px;
-    background-repeat: no-repeat;
-    background-position: 90%;
-    background-size: 30px;
-    text-align: left;
     padding: 6px;
-    padding-right: 0px;
     font-size: 20px;
     background-color: burlywood;
     color: rgb(184, 104, 0);
@@ -71,6 +68,26 @@ button {
     border: solid 2.5px rgb(62, 35, 0);
     box-shadow: 5px 5px 10px #000000;
     margin-top: 10px;
+}
+
+button#goFishButton {
+    background-image: url(/StardewValleyFishTank/images/fishingRod.png);
+    background-repeat: no-repeat;
+    background-position: 90%;
+    background-size: 30px;
+    text-align: left;
+    padding-right: 0px;
+    width: 150px;
+}
+
+button a {
+    text-decoration: none; color: rgb(184, 104, 0);
+    -webkit-text-stroke: .5px black;
+}
+
+#homeBtn {
+    align-self: flex-start;
+    margin-left: 10px;
 }
 
 button:hover {

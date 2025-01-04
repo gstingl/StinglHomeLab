@@ -34,6 +34,22 @@ ul {
     list-style-type: none;
 }
 
+ul a {
+    text-decoration: none;
+    color: #257180;
+    font-size: 20px;
+    font-weight: 600;
+    width: auto;
+    padding-bottom: 1px;
+    border-bottom: solid 3px #FD8B51;
+    transition-property: border-bottom;
+    transition-duration: .2s;
+}
+
+ul a:hover {
+    border-bottom: solid 5px #FD8B51;
+}
+
 .sec1 {
     background-color: #2A3132;
     display: flex;

@@ -93,6 +93,19 @@ ul a:hover {
     margin-top: 10px;
 }
 
+button.sign_up {
+    border: 0;
+    padding: 0;
+}
+
+button.sign_up:hover {
+    filter: brightness(90%);
+}
+
+button.sign_up:active {
+    filter:brightness(80%)
+}
+
 #coverPhoto {
     width: auto;
     height: 400px;

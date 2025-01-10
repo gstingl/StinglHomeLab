@@ -78,6 +78,11 @@ button:hover {
     background-color: beige;
 }
 
+#homeBtn {
+    align-self: flex-start;
+    margin: 50px;
+}
+
 #zero {
     width: 66.3%;
 }

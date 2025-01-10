@@ -1,0 +1,91 @@
+* {
+    margin: 0px;
+}
+
+@font-face {
+    font-family: calculator;
+    src: url(/Calculator.ttf);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.backgroundBox {
+    width: 400px;
+    height: 500px;
+    background-color: rgb(61, 61, 61);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#display {
+    width: 375px;
+    height: 15%;
+    margin: 10px;
+    margin-top: 20px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 5px;
+    font-family: calculator;
+    font-size: 60px;
+    text-align: end;
+    
+}
+
+.operators {
+    height: 12%;
+    width: 375px;
+    margin: 10px;
+    margin-top: 5px;
+    display: flex;
+}
+
+.numberPad {
+    height: 65%;
+    width: 375px;
+    margin: 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+button {
+    border-radius: 6px;
+    font-weight: 700;
+    transition: ease-in;
+    transition-duration: .08s;
+}
+
+button:hover {
+    filter: brightness(85%);
+}
+
+.operators button {
+    flex-grow: 1;
+    font-size: 20px;
+    background-color: beige;
+}
+
+.numberPad button {
+    flex-grow: 1;
+    height: 25%;
+    width: 33%;
+    font-size: 25px;
+    background-color: beige;
+}
+
+#zero {
+    width: 66.3%;
+}
+
+#clear {
+    background-color: red;
+}
+
+#equals {
+    background-color: green;
+}

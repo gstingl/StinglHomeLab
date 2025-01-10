@@ -1,18 +1,33 @@
-//Input season and weather then display fish and show the location and times
-//Potentialy make a large array called "fish" and have an array of objects to iterate through
 
-let currentSeason = 'spring';
+
+//let currentSeason = 'spring';
+//let currentWeather = 'sun';
 let seasonSelect = document.getElementById("seasonSelect");
-let currentWeather = 'sun';
+let weatherSelect = document.getElementById("weatherSelect");
 let fishableFish = [];
 let fishingButton = document.getElementById("goFishButton");
+let fishableDisplay = document.getElementById('fishBox');
 
-//first check if any fish in the 'fish' array have properties that match the
-// current season or weather.
+fishingButton.addEventListener('click', function(){
+    console.log(seasonSelect);
+    console.log(weatherSelect);
+    fishableFish = [];
+    fishSearch();
+    console.log(fishableFish);
+    displayFishCard();
+});
 
+seasonSelect.addEventListener('change', function(){
+    seasonSelect = document.getElementById("seasonSelect").value;
+});
+
+weatherSelect.addEventListener('change', function(){
+    weatherSelect = document.getElementById("weatherSelect").value;
+});
 
 const fishList = {
-    PufferFish: {
+    pufferFish: {
+        name: 'Pufferfish',
         location: ['Ocean', 'Ginger Island Oceans'],
         minTime: '12PM',
         maxTime: '4PM',
@@ -20,6 +35,7 @@ const fishList = {
         weather: 'sun',
 },
     anchovy: {
+        name: 'Anchovy',
         location: 'Ocean',
         minTime: '6AM',
         maxTime: '12AM',
@@ -27,6 +43,7 @@ const fishList = {
         weather: 'any',
 },
     tuna: {
+        name: 'Tuna',
         location: ['Ocean', 'Ginger Island Oceans'],
         minTime: '6AM',
         maxTime: '7PM',
@@ -34,6 +51,7 @@ const fishList = {
         weather: 'any',
 },
     sardine: {
+        name: 'Sardine',
         location: 'Ocean',
         minTime: '6AM',
         maxTime: '7PM',
@@ -41,6 +59,7 @@ const fishList = {
         weather: 'any',
 },
     bream: {
+        name: 'Bream',
         location: ['River Town', 'River Forest'],
         minTime: '6AM',
         maxTime: '2AM',
@@ -51,11 +70,11 @@ const fishList = {
 //Checks fish properties are string or array and then checks if it matches the variable for season
 const seasonCheck = (fishName) => {
     if (typeof fishList[fishName].season === 'string') {
-        if (fishList[fishName].season === currentSeason || fishList[fishName].season === 'any') {
+        if (fishList[fishName].season === seasonSelect || fishList[fishName].season === 'any') {
             return true;
         } else return false;
     } else {
-        if (fishList[fishName].season.includes(currentSeason)) {
+        if (fishList[fishName].season.includes(seasonSelect)) {
             return true;
         } else return false;
     };
@@ -64,11 +83,11 @@ const seasonCheck = (fishName) => {
 //Checks fish properties are string or array and then checks if it matches the variable for weather
 const weatherCheck = (fishName) => {
     if (typeof fishList[fishName].weather === 'string') {
-        if (fishList[fishName].weather === currentWeather || fishList[fishName].weather === 'any') {
+        if (fishList[fishName].weather === weatherSelect || fishList[fishName].weather === 'any') {
             return true;
         } else return false;
     } else {
-        if (fishList[fishName].weather.includes(currentWeather)) {
+        if (fishList[fishName].weather.includes(weatherSelect)) {
             return true;
         } else return false;
     };
@@ -77,47 +96,42 @@ const weatherCheck = (fishName) => {
 //Checks that both season and weather check are true and returns fish names
 function fishSearch() {for(let fishName in fishList) {
     if(weatherCheck(fishName) === true && seasonCheck(fishName) === true) {
-        fishableFish.push(fishName);
-        const newFishObjects = {...fishableFish};
+        //fishableFish.push(fishName);
+        return fishName;
 }}};
 
-fishSearch();
+//use filter function on displayFishCard to filter entire array of fish based returning true for the fishSearch function
 
-function convertFish() {
+const displayFishCard = () => {
+    fishableObjectList.forEach(fish => {
+        const fishCard = document.createElement("div");
+        fishCard.innerHTML = 
+            `<div class="fish">
+            <div class="fish_name">Type: ${fish.name}</div>
+            <div class="location">Location: ${fish.location}</div>
+            <div class="time">Time: ${fish.minTime} to ${fish.maxTime}</div>
+            <img class="fishThumbnail" src="/StardewValleyFishTank/images/fish/${fish.name}.png">
+            </div>`, ''
+    })
+}
+
+/*function convertFish() {
     const newFishObjectList = {...fishableFish};
     return newFishObjectList;
 };
-
-
-const fishDisplay = Object.values(convertFish()).reduce((accum, currKey) => accum +
-    `<div class="fish">
-    <div class="fish_name">Type: ${currKey}</div>
-    <div class="location">Location: ${fishList[currKey].location}</div>
-    <div class="time">Time: ${fishList[currKey].minTime} to ${fishList[currKey].maxTime}</div>
-    <img class="fishThumbnail" src="/StardewValleyFishTank/images/fish/${currKey}.png">
-  </div>`, '');
-
-function pasteToHtml() {document.getElementById('fishBox').innerHTML = fishDisplay};
-
-
-seasonSelect.addEventListener("change", function(){
-    currentSeason = seasonSelect.value;
-    });
-
-fishingButton.addEventListener("click", function(){
-    pasteToHtml();
-});
-
-
-
-
-
+*/
 
 /*
-const runCalc = document.querySelector('button');
-runCalc.addEventListener('click', function fishSearch() {
-    convertFish();
-    fishDisplay();
-});
+function fishDisplay() {
+    fishableFish.forEach((fishElement) =>
+    `<div class="fish">
+    <div class="fish_name">Type: ${fishElement}</div>
+    <div class="location">Location: ${fishList[fishElement].location}</div>
+    <div class="time">Time: ${fishList[fishElement].minTime} to ${fishList[fishElement].maxTime}</div>
+    <img class="fishThumbnail" src="/StardewValleyFishTank/images/fish/${fishElement}.png">
+  </div>`, '');
+}
+
+console.log(fishList[bream]);
 
 */

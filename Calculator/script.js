@@ -1,5 +1,8 @@
 let calcDisplay = document.getElementById('display');
 let displayValue = '';
+let previousInput = '';
+let secondInput = '';
+let operator = '';
 
 function add(numOne, numTwo) {
     return numOne + numTwo;
@@ -18,26 +21,30 @@ function divide(numOne, numTwo) {
 }
 
 function operate(operatorFunc, numOne, numTwo) {
-    return operatorFunc(numOne, numTwo);
+    operatorFunc(numOne, numTwo);
+    previousInput = displayValue;
+    calcDisplay.innerHTML = displayValue;
 }
 
 function updateCalc() {
-    let btnInput = this.value;
-    let firstInput = '';
-    let secondInput = '';
-    let operatorInput = '';
-    if(btnInput === Number) {
-        if(firstInput === ''){
-            displayValue = displayValue + '' + btnInput;
-        } else {
-            displayValue = secondInput;
-            secondInput = displayValue + '' + btnInput;
-        }
+    if(this.value === 'equals' && previousInput != '' && operator != '' && secondInput != '') {
+        operate(operator, previousInput, secondInput);
     } else {
-        firstInput = displayValue;
-        operatorInput = btnInput;
+        if(operator === '') {
+            displayValue = displayValue + '' + this.value;
+            previousInput = displayValue;
+        } else {
+            displayValue = displayValue + '' + this.value;
+            secondInput = displayValue;
+        }
+        calcDisplay.innerHTML = displayValue;
     }
-    calcDisplay.innerHTML = displayValue;
+}
+
+function addOperator() {
+    displayValue = '';
+    operator = this.value;
+    calcDisplay.innerHTML = '';
 }
 
 function clearCalc() {
@@ -47,7 +54,8 @@ function clearCalc() {
     calcDisplay.innerHTML = "";
 }
 
-document.getElementById('add').addEventListener('click', updateCalc);
+document.getElementById('equals').addEventListener('click', updateCalc);
+document.getElementById('add').addEventListener('click', addOperator);
 document.getElementById('decimal').addEventListener('click', updateCalc);
 document.getElementById('zero').addEventListener('click', updateCalc);
 document.getElementById('one').addEventListener('click', updateCalc);

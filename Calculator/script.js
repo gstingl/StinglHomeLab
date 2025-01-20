@@ -4,27 +4,29 @@ let previousInput = '';
 let secondInput = '';
 let operator = '';
 
-function add(numOne, numTwo) {
-    return numOne + numTwo;
-}
-
-function subtract(numOne, numTwo) {
-    return numOne - numTwo;
-}
-
-function multiply(numOne, numTwo) {
-    return numOne * numTwo;
-}
-
-function divide(numOne, numTwo) {
-    return numOne / numTwo;
-}
-
-function operate(operatorFunc, numOne, numTwo) {
-    operatorFunc(numOne, numTwo);
-    previousInput = displayValue;
+function operate() {
+    switch(operator) {
+        case 'add':
+            previousInput = Number(previousInput) + Number(secondInput);
+            break;
+        case 'subtract':
+            previousInput = Number(previousInput) - Number(secondInput);            
+            break;
+        case 'multiply':
+            previousInput = Number(previousInput) * Number(secondInput);          
+            break;
+        case 'divide':
+            if(secondInput === '0') {
+                alert("Error Cannot Divide By Zero");
+                clearCalc();
+            } else
+            previousInput = Number(previousInput) / Number(secondInput);
+            break;
+    }
+    displayValue = previousInput;
     calcDisplay.innerHTML = displayValue;
-}
+    console.log(previousInput);
+} 
 
 function updateCalc() {
     if(this.value === 'equals' && previousInput != '' && operator != '' && secondInput != '') {
@@ -49,22 +51,21 @@ function addOperator() {
 
 function clearCalc() {
     displayValue = '';
-    firstInput = '';
+    previousInput = '';
     secondInput = '';
+    operator = '';
     calcDisplay.innerHTML = "";
 }
 
+const operatorButtons = document.querySelectorAll('.operators')
+operatorButtons.forEach(node => {
+    node.addEventListener('click', addOperator);
+});
+
+const numPadNumbers = document.querySelectorAll('.numbers')
+numPadNumbers.forEach(node => {
+    node.addEventListener('click', updateCalc);
+});
+
 document.getElementById('equals').addEventListener('click', updateCalc);
-document.getElementById('add').addEventListener('click', addOperator);
-document.getElementById('decimal').addEventListener('click', updateCalc);
-document.getElementById('zero').addEventListener('click', updateCalc);
-document.getElementById('one').addEventListener('click', updateCalc);
-document.getElementById('two').addEventListener('click', updateCalc);
-document.getElementById('three').addEventListener('click', updateCalc);
-document.getElementById('four').addEventListener('click', updateCalc);
-document.getElementById('five').addEventListener('click', updateCalc);
-document.getElementById('six').addEventListener('click', updateCalc);
-document.getElementById('seven').addEventListener('click', updateCalc);
-document.getElementById('eight').addEventListener('click', updateCalc);
-document.getElementById('nine').addEventListener('click', updateCalc);
 document.getElementById('clear').addEventListener('click', clearCalc);
